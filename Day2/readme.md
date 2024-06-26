@@ -67,3 +67,10 @@ Console.WriteLine(trimmedGreeting);
 trimmedGreeting = greeting.Trim();
 Console.WriteLine(trimmedGreeting);
 ```
+```
+string greeting = "Good Morning";
+
+Console.WriteLine(greeting.ToUpper());
+
+Console.WriteLine(greeting.ToLower());
+```
