@@ -151,3 +151,23 @@ namespace ifapp01
     }
 }
 ```
+```
+namespace FirstFor
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int sum = 0;
+            Console.WriteLine("1부터 100까지 합을 구하시오.");
+            for (int i = 0; i <= 100; i++)
+            {
+                sum = sum + i ;
+                
+            }
+            
+            Console.WriteLine(sum);
+        }
+    }
+}
+```
