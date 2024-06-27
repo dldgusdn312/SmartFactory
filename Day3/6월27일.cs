@@ -206,3 +206,39 @@ namespace ExamApp01
     }
 }
 ```
+```
+<연산 하기>
+namespace ExamApp01
+{
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("첫 번째 숫자를 입력하세요. ");
+            int num1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("연산자(+,-,*,/)를 입력하세요. ");
+            string 연산자 = Console.ReadLine();
+            Console.WriteLine("두 번째 숫자를 입력하세요. ");
+            int num2 = int.Parse(Console.ReadLine());
+
+            if (연산자 == "+")
+            {
+                Console.WriteLine(num1 + num2);
+            }
+            else if (연산자 == "-")
+            {
+                Console.WriteLine(num1 - num2);
+            }
+            else if (연산자 == "*")
+            {
+                Console.WriteLine(num1 * num2);
+            }
+            else if (연산자 == "/")
+            {
+                Console.WriteLine(num1 / num2);
+            }
+        }
+    }
+}
+```
