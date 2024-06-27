@@ -78,3 +78,32 @@ namespace ConsoleApp4
     }
 }
 ```
+```
+<1~100까지 3의배수와 7의배수를 각각 두 줄로 나타내기>
+namespace ConsoleApp4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("3의 배수와 7의 배수");
+
+            for (int i = 1; i <= 100; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    Console.WriteLine($"{i} ");
+                } 
+            }
+            for (int i = 1; i <= 100; i++)
+            {
+                if (i % 7 == 0)
+                {
+                    Console.WriteLine($"{i} ");
+                }
+            }
+        }
+
+    }
+}
+```
