@@ -142,7 +142,7 @@ namespace ExamApp01
 }
 ```
 ```
-<성적입력>
+<중첩IF 성적입력>
 namespace ExamApp01
 {
     internal class Program
