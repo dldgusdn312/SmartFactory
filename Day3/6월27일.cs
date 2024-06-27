@@ -141,5 +141,38 @@ namespace ExamApp01
     }
 }
 ```
-
+```
+<성적입력>
+namespace ExamApp01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("성적을 입력해 주세요 : ");
+            int score = Int32.Parse(Console.ReadLine());
+            if (score >= 90)
+            {
+                Console.WriteLine("A학점입니다.");
+            }
+            else if (score >= 80)
+            {
+                Console.WriteLine("B학점입니다.");
+            }
+            else if (score >= 70)
+            {
+                Console.WriteLine("C학점입니다.");
+            }
+            else if (score >= 60)
+            {
+                Console.WriteLine("D학점입니다.");
+            }
+            else
+            {
+                Console.WriteLine("F학점입니다.");
+            }
+        }
+    }
+}
+```
 
