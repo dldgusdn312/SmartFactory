@@ -109,3 +109,37 @@ namespace ConsoleApp4
     }
 }
 ```
+```
+<for문 100~1까지 거꾸로 출력 -짝수만 출력, while문 100~1까지 거꾸로 출력 - 홀수만 출력>
+namespace ExamApp01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            for (int i = 100; i >= 1; i--)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.Write($"{i} ");
+                }
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+
+            int j = 100;
+            while (j >= 1)
+            {
+                if (j % 2 != 0)
+                {
+                    Console.Write($"{j} ");
+                }
+                j--;
+            }
+        }
+    }
+}
+```
+
+
