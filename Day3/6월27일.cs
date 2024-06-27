@@ -242,3 +242,56 @@ namespace ExamApp01
     }
 }
 ```
+```
+<연산 심화 문제>
+namespace ExamApp01
+{
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int i = 0;
+            while (true)
+            {
+
+            
+                Console.WriteLine("첫 번째 숫자를 입력하세요. ");
+            int num1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("연산자(+,-,*,/)를 입력하세요. ");
+            string 연산자 = Console.ReadLine();
+            Console.WriteLine("두 번째 숫자를 입력하세요. ");
+            int num2 = int.Parse(Console.ReadLine());
+
+            if (연산자 == "+")
+            {
+                Console.WriteLine(num1 + num2);
+            }
+            else if (연산자 == "-")
+            {
+                Console.WriteLine(num1 - num2);
+            }
+            else if (연산자 == "*")
+            {
+                Console.WriteLine(num1 * num2);
+            }
+            else if (연산자 == "/")
+            {
+                Console.WriteLine(num1 / num2);
+            }
+                else
+                {
+                    Console.WriteLine("잘못된 연산자입니다.");
+                }
+
+                Console.WriteLine("다시 시작하겠습니까? (y/n)");
+                if (Console.ReadLine().ToLower() == "n")
+                {
+                    Console.WriteLine("종료합니다");
+                    break;
+                }
+            }
+        }
+    }
+}
+```
