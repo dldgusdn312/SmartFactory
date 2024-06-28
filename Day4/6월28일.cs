@@ -240,3 +240,33 @@ namespace Arayy03
     }
 }
 ```
+```
+<다차원 배열>
+namespace Arayy03
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = 5;
+            int[,] arr = new int[N, N];
+            int cnt = 1;
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    arr[i, j] = cnt++;
+                }
+            }
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    Console.Write($"{arr[i, j]} ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+```
