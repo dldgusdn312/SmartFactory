@@ -51,3 +51,28 @@ namespace Array01
         }
     }
 }
+```
+<배열 기본 구조3>
+using System.Net.Http.Headers;
+
+namespace Array01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //크기가 5인 정수형 배열 arrint를 선언하고
+            //값은 10,20,30,40,50 을 입력
+            int[] arrint = new int[5];
+            for(int i=0; i<arrint.Length; i++)
+            {
+                arrint[i] = (i+1)*10;
+            }
+            for (int i = 0; i < arrint.Length; i++)
+            {
+                Console.WriteLine(arrint[i]);
+            }
+        }
+    }
+}
+```
