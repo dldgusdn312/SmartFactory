@@ -76,3 +76,28 @@ namespace Array01
     }
 }
 ```
+```
+<배열 a~z 나열>
+using System.Net.Http.Headers;
+
+namespace Array01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] arr = new char[26];
+            char ch = 'a';
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = ch++;
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+        }
+    }
+}
+```
