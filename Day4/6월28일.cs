@@ -101,3 +101,34 @@ namespace Array01
     }
 }
 ```
+```
+<배열을 이용하여 성적을 입력받아 평균과 총점 구하기>
+namespace Array01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            int[] score = new int[3];
+            Console.Write("국어 성적 : ");
+            score[0] = Int32.Parse(Console.ReadLine());
+            Console.Write("영어 성적 : ");
+            score[1] = Int32.Parse(Console.ReadLine());
+            Console.Write("수학 성적 : ");
+            score[2] = Int32.Parse(Console.ReadLine());
+            Console.WriteLine();
+           
+
+            int total = score[0] + score[1] + score[2];
+
+            // 평균 계산
+            double average = total / 3.0;
+
+            // 결과 출력
+            Console.WriteLine("총점: " + total);
+            Console.WriteLine("평균: " + average);
+        }
+    }
+}
+```
