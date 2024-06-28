@@ -159,3 +159,28 @@ namespace Arayy03
     }
 }
 ```
+```
+<입력받은 문자열 거꾸로 출력하기>
+using System.Threading;
+
+namespace Arayy03
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            {
+
+                Console.WriteLine("문자열을 입력하세요 : ");
+                string str = Console.ReadLine();
+                string outText = "";
+                for (int i = str.Length - 1; i >= 0; i--)
+                {
+                    outTex += str[i];
+                }
+                Console.WriteLine("$역순 문자열: {outTex}");
+            }
+        }
+    }
+}
+```
