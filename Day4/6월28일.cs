@@ -176,9 +176,9 @@ namespace Arayy03
                 string outText = "";
                 for (int i = str.Length - 1; i >= 0; i--)
                 {
-                    outTex += str[i];
+                    outText += str[i];
                 }
-                Console.WriteLine("$역순 문자열: {outTex}");
+                Console.WriteLine("$역순 문자열: {outText}");
             }
         }
     }
