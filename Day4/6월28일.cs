@@ -184,3 +184,25 @@ namespace Arayy03
     }
 }
 ```
+```
+<foreach 함수 사용>
+namespace Arayy03
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+                string[] fruits = { "사과", "복숭아" };
+
+                for (int i = 0;i < fruits.Length; i++)
+                {
+                    Console.WriteLine(fruits[i]);
+                }
+                foreach (string fruit in fruits)
+            {
+            Console.WriteLine(fruit); }
+        }
+    }
+}
+```
