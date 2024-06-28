@@ -206,3 +206,37 @@ namespace Arayy03
     }
 }
 ```
+```
+<3의배수, 7의배수 나타내기>
+namespace Arayy03
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] num = new int[100];
+            for (int i = 0; i < num.Length; i++)
+            {
+                num[i] = i + 1;
+            }
+            Console.Write("3의 배수 : ");
+            for (int i = 0; i < num.Length; i++)
+            {
+                if (num[i] % 3 == 0)
+                {
+                    Console.Write($"{ num[i]} ");
+                }
+            }
+            Console.WriteLine();
+            Console.Write("7의 배수 : ");
+            for (int i = 0; i < num.Length; i++)
+            {
+                if (num[i] % 7 == 0)
+                {
+                    Console.Write($"{num[i]} ");
+                }
+            }
+        }
+    }
+}
+```
