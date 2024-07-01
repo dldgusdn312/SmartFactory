@@ -104,3 +104,27 @@ namespace VariableChange
         }
     }
 ```
+```
+<배열 요소값 중 가장 큰 값 max 출력하기>
+using System.Numerics;
+
+namespace VariableChange
+{
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+            int[] arr = { -7, 5, 60, -33, 42};
+            int max = int.MinValue;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
+            }
+            Console.WriteLine($"최대값은 : {max}");
+            }
+        }
+    }
+```
