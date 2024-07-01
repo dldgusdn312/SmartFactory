@@ -39,3 +39,39 @@ namespace VariableChange
     }
 }
 ```
+```
+<4칙연산을 메소드로 만들기>
+using System.Numerics;
+
+namespace VariableChange
+{
+    internal class Program
+    {
+        static void MyPrint()
+        {
+            Console.WriteLine("안녕");
+        }
+        static int Plus(int a, int b)
+        {
+            return a + b;
+        }
+        static int Minus(int n1, int n2)
+        {
+            return n1 - n2;
+        }
+        static double Divide(int a, int b)
+        {
+            return (double)a / b;
+        }
+        static void Main(string[] args)
+        {
+            //4칙 연산 (+,-,*,/) 메소드로 만들기
+            //Plus(,) Minus(,) Multiple(,) Divide(,)
+            MyPrint();
+            int result = Plus(1, 2);
+            Console.WriteLine(result);
+            Console.WriteLine(Divide(1, 2));
+        }//end of Main
+    }//end of Program
+}
+```
