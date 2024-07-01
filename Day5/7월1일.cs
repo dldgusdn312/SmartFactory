@@ -128,3 +128,23 @@ namespace VariableChange
         }
     }
 ```
+```
+<메소드 이용하여 total값 구하기>
+namespace Scoreapp02
+{
+    internal class Program
+    {
+        static int TotalScore(int a, int b, int c)
+        {
+            return a + b + c;
+        }
+        static void Main(string[] args)
+        {
+            //국어, 영어, 수학 (90,90,91)
+            int totalScore = TotalScore(90, 90, 91);
+            Console.WriteLine(totalScore); //271
+            Console.WriteLine($"평균값 : {totalScore / 3.0:F2}");
+        }
+    }
+}
+```
