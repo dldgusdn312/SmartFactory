@@ -192,3 +192,43 @@ namespace Scoreapp02
         }
     }
 }
+```
+```
+<book 만들기>
+namespace OOP01
+{
+    class Book
+    {
+        string Title;
+        decimal ISBN13;
+        string Contents;
+        string Author;
+        int PageCount;
+    }
+    class Student
+    {
+        public  int ID;
+        public string Name;
+
+        public string Run()
+        {
+            return "학번 : " + this.ID + " " + this.Name + "달리다.";
+        }
+
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Book guliver = new Book();
+
+            Student woo = new Student();
+
+            woo.ID = 1;
+            woo.Name = "이현우";
+            Console.WriteLine(woo.ID);
+            Console.WriteLine(woo.Name);
+        }
+    }
+}
+```
