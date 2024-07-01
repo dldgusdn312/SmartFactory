@@ -148,3 +148,47 @@ namespace Scoreapp02
     }
 }
 ```
+```
+Quiz 2 
+using static System.Formats.Asn1.AsnWriter;
+
+namespace Scoreapp02
+{
+    internal class Program
+    {
+        //성적 입력 함수를 만들어 주세요. 3과목
+        static int[] InputThreeScore()
+        {
+            int[] score = new int[3];
+            Console.WriteLine("국어 : ");
+            score[0] = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("영어 : ");
+            score[1] = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("수학 : ");
+            score[2] = Int32.Parse(Console.ReadLine());
+        }
+        static int TotalScore(int[] arr)
+        {
+            int totalscore = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                totalscore += arr[i];
+            }
+            return totalscore;
+        }
+        static double GetAvg(int totalScore)
+        {
+            double avg = totalScore / 3.0;
+            return avg;
+        }
+        static void Main(string[] args)
+        {
+            int[] score = InputThreeScore();
+            int total = TotalScore(score);
+            double average = GetAvg(total);
+
+            Console.WriteLine($"총점 : {total}");
+            Console.WriteLine($"평균 : {average:F2}");
+        }
+    }
+}
