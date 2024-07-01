@@ -306,3 +306,27 @@ namespace swapbyvalue
     }
 }
 ```
+```
+<SwapByValue ref사용>
+namespace swapbyvalue
+{
+    internal class Program
+    {
+        static void Swap(ref int a,ref int b)
+        {
+            int temp = b;
+            b = a;
+            a = temp;
+
+            Console.WriteLine($"{a} {b}");
+        }
+        static void Main(string[] args)
+        {
+            int x = 3, y = 4;
+            Console.WriteLine($"{x} {y}");
+            Swap(ref x,ref y);
+            Console.WriteLine($"{x} {y}");
+        }
+    }
+}
+```
