@@ -232,3 +232,25 @@ namespace OOP01
     }
 }
 ```
+```
+<제곱>
+namespace OOP01
+{
+    class Mathmatics
+    {
+        public int f(int x)
+        {
+            return x * x;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Mathmatics m = new Mathmatics();
+            int result = m.f(5);
+            Console.WriteLine(result);
+        }
+    }
+}
+```
