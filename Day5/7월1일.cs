@@ -75,3 +75,32 @@ namespace VariableChange
     }//end of Program
 }
 ```
+```
+Quiz1
+//1~100까지 계속 더한 결과값은 5050입니다.
+//이를 메소드로 만들어서 Main에서는 결과만 출력하고
+//5050 결과는 NumberAdd 메소드를 만들어서 동작시켜 보자.
+
+using System.Numerics;
+
+namespace VariableChange
+{
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                int result = NumberAdd();
+                Console.WriteLine("1부터 100까지의 합: " + result);
+            }
+            static int NumberAdd()
+            {
+                int sum = 0;
+                for (int i = 1; i <= 100; i++)
+                {
+                    sum += i;
+                }
+                return sum;
+            }
+        }
+    }
+```
