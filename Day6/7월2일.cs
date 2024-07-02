@@ -150,19 +150,19 @@ namespace dowhile
                 Console.WriteLine("[문제]");
                 Console.WriteLine("1. 1 ~ 100까지 홀수만 출력합니다.");
                 Console.WriteLine("2. 알파벳 A~Z / a~z 까지 출력합니다.");
-               // Console.WriteLine("3. 12와 18의 최대공약수를 구해봅니다.");
-                Console.WriteLine("3. 프로그램 종료");
+                Console.WriteLine("3. 12와 18의 최대공약수를 구해봅니다.");
+                Console.WriteLine("4. 프로그램 종료");
                 Console.Write("선택 : ");
                 choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
-                        for(int i = 1; i <=100; i += 2)
+                        for (int i = 1; i <= 100; i += 2)
                             Console.Write($"{i} ");
-                            Console.WriteLine();
+                        Console.WriteLine();
                         break;
                     case 2:
-                        for(int k= 'A'; k <= 'Z'; k++)
+                        for (int k = 'A'; k <= 'Z'; k++)
                             Console.Write($"{(char)k} ");
                         Console.WriteLine();
                         for (int m = 'a'; m <= 'z'; m++)
@@ -170,15 +170,28 @@ namespace dowhile
                         Console.WriteLine();
                         break;
                     case 3:
-                        Console.WriteLine("프로그램 종료를 선택하셨습니다.");
+                        int num1 = 12;
+                        int num2 = 18;
+                        if (num1 > num2)
+                        {
+                            Console.WriteLine("최대공약수 : " + num1 % num2);
+                        }
+                        else
+                        {
+                            Console.WriteLine("최대공약수 : " + num2 % num1);
+                        }
+                            break;
+                        case 4:
+                            Console.WriteLine("프로그램을 종료합니다.");
                         break;
-                        default:
+                            default:
                     Console.WriteLine("잘못된 입력값 입니다.");
                             break;
-                }
-            } while (choice != 3);
+                        }
+                } while (choice != 4) ;
 
             }
         }
     }
+
 ```
