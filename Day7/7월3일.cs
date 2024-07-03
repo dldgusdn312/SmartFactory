@@ -487,3 +487,33 @@ namespace PropertyApp2
 }
 ```
 ```
+<페이지 133번 문제>
+namespace page133
+{
+    class Circle
+    {
+        private double pi = 3.14;
+        public double Pi
+        {
+            get
+            {
+                return pi;
+            }
+            set
+            {
+                pi = value;
+            }
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+                Circle o = new Circle();
+                o.Pi = 3.14159;
+            double piValue = o.Pi;
+        }
+    }
+}
+```
+```
