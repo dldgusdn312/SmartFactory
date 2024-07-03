@@ -283,3 +283,66 @@ namespace ConsoleApp14
 }
 ```
 ```
+<abstract>
+namespace ConsoleApp10
+{
+    internal class Program
+    {
+        abstract class Car
+        {
+            public abstract void Run();
+        }
+        class Bus : Car
+        {
+            public override void Run()
+            {
+                Console.WriteLine("버스가 달린다.");
+            }
+        }
+        class Taxi : Car
+        {
+            public override void Run()
+            {
+                Console.WriteLine("택시가 달린다.");
+            }
+        }
+        class Truck : Car
+        {
+            public override void Run()
+            {
+                Console.WriteLine("트럭이 달린다.");
+            }
+        }
+        static void Main(string[] args)
+        {
+            Bus bus = new Bus();
+            Taxi taxi = new Taxi();
+            Truck truck = new Truck();
+            bus.Run();
+            taxi.Run();
+            truck.Run();
+
+            Car car1 = new Bus();
+            Car car2 = new Taxi();
+            Car car3 = new Truck();
+            car1.Run();
+            car2.Run();
+            car3.Run();
+           
+            //Car[] cars = new Car[3];
+            //cars[0] = new Bus();
+            //cars[1] = new Taxi();
+            //cars[2] = new Truck();
+
+            //Car car4 = new Bus();
+            //car4.Run();
+            //car4 = new Taxi();
+            //car4.Run();
+            //car4 = new Truck();
+            //car4.Run();
+
+        }
+    }
+}
+```
+```
