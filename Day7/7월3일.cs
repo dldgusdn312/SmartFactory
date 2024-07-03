@@ -94,3 +94,48 @@ namespace methodapp02
     }
 }
 ```
+```
+<메소드 사용>
+namespace methodapp3
+{
+    class Sensor
+    {
+        public void ReadData()
+        {
+            Console.WriteLine("데이터를 읽다.");
+        }
+        public void ReadDate(byte data)
+        {
+            Console.WriteLine($"{data} 데이터를 읽다.");
+        }
+      //설정값 조정하기
+        public void Calibrate()
+        {
+            Console.WriteLine("설정값을 조정하다.");
+        }
+        //경고메시지 보내기
+        public void SendAlert()
+        {
+            Console.WriteLine("경고 보내기");
+        }
+        public void SendAlert(string message)
+        {
+            Console.WriteLine($"{message} 경고 보내기");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Sensor sensor = new Sensor();
+            sensor.ReadData();
+           // byte[] arr = { 0x001, 0x002, 0x003 };
+            sensor.ReadData();
+            sensor.Calibrate();
+            sensor.SendAlert();
+            sensor.SendAlert("온도초과");
+        }
+    }
+}
+```
+```
