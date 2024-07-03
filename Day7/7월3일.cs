@@ -139,3 +139,49 @@ namespace methodapp3
 }
 ```
 ```
+namespace ConsoleApp7
+{
+    class Computer
+    {
+        public void Run() {
+            Console.WriteLine("컴퓨터를 구동합니다.");
+        }
+    }
+    class NoteBook : Computer
+    {
+    }
+    class Car
+    {
+        public string brand;
+        public Car()
+        {
+            brand = "현대";
+            Console.WriteLine("부모 클래스 생성자가 호출 되었습니다.");
+        }
+        public void Run()
+        {
+            Console.WriteLine("차가 달린다");
+        }
+    }
+    class SuperCar : Car
+    {
+        public SuperCar()
+        {
+            Console.WriteLine("자식 클래스 생성자가 호출 되었습니다.");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Computer computer = new Computer();
+            computer.Run();
+            NoteBook noteBook = new NoteBook();
+            noteBook.Run();
+            SuperCar superCar = new SuperCar();
+            superCar.Run();
+        }
+    }
+}
+```
+```
