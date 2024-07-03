@@ -433,3 +433,57 @@ namespace OOP06
 }
 ```
 ```
+<property 사용>
+namespace PropertyApp2
+{
+    class Person
+    {
+        private string name;
+        private int age;
+        public string Color { get; set; }
+
+        public string Name
+        {
+            get { 
+               return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+        public int Age
+        {
+            get
+            {
+                return age;
+
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    age = value;
+                }
+                else
+                {
+                    Console.WriteLine("나이는 0살보다 어릴 수 없습니다.");
+                }
+            }
+        }
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                Person paul = new Person();
+                paul.name = "파울이";
+                paul.Age = 23;
+
+                Console.WriteLine($"이름 : {paul.name} , 나이 : {paul.age}");
+
+            }
+        }
+    }
+}
+```
+```
