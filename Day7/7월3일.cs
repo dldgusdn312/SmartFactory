@@ -185,3 +185,42 @@ namespace ConsoleApp7
 }
 ```
 ```
+<오버라이딩>
+namespace ConsoleApp8
+{
+    class Shape
+    {
+        public string name;
+        public Shape()
+        {
+            this.name = "도형";
+            Console.WriteLine("부모 클래스 생성자");
+        }
+        public virtual void Draw()
+        {
+            Console.WriteLine("도형을 그리다.");
+        }
+    }
+    class Rectangle : Shape
+    {
+        public Rectangle()
+        {
+            this.name = "사각형";
+            Console.WriteLine("자식 클래스 생성자");
+        }
+        public override void Draw()
+        {
+            Console.WriteLine("사각형을 그리다.");
+        }
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                Rectangle rect = new Rectangle();
+                Console.WriteLine(rect.name);
+                rect.Draw();
+            }
+        }
+    }
+}
+```
