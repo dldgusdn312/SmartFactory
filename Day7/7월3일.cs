@@ -346,3 +346,47 @@ namespace ConsoleApp10
 }
 ```
 ```
+<quiz02>
+namespace ConsoleApp10
+{
+    abstract class Mammal
+    {
+        public abstract void Eat();
+    }
+    class Lion : Mammal
+    {
+        public override void Eat()
+        {
+            Console.WriteLine("사자가 먹습니다.");
+        }
+    }
+    class Tiger : Mammal
+    {
+        public override void Eat()
+        {
+            Console.WriteLine("호랑이가 먹습니다.");
+        }
+    }
+    class Dog : Mammal
+    {
+        public override void Eat()
+        {
+            Console.WriteLine("개가 먹습니다.");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Mammal lion = new Lion();
+            Mammal tiger = new Tiger();
+            Mammal dog = new Dog();
+
+            lion.Eat();
+            tiger.Eat();
+            dog.Eat();
+        }
+    }
+}
+```
+```
