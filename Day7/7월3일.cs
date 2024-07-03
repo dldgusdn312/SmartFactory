@@ -517,3 +517,36 @@ namespace page133
 }
 ```
 ```
+<quiz03>
+namespace page133
+{
+    class Cat
+    {
+
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        public string Color { get; set; }
+
+        public void ShowCatInfo()
+        {
+          Console.WriteLine ($"{this.Name}의 나이는 {this.Age}살이고 색깔은 {this.Color}입니다.");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Cat cat = new Cat();
+            cat.Name = "야옹이";
+            cat.Age = 7;
+            cat.Color = "하얀색";
+
+           cat.ShowCatInfo();
+        }
+    }
+
+}
+```
+```
