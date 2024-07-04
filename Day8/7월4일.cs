@@ -143,3 +143,35 @@ class Program
 }
 ```
 ```
+<quiz02 완전수구하기>
+namespace OOOP07
+{
+    internal class Program
+
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("1000이하의 완전수를 입력하시오 : ");
+            int a = Int32.Parse(Console.ReadLine());
+            int result = 0;
+            for (int i = 1; i < a; i++)
+            {
+                if (a % i == 0)
+                {
+                    result += i;
+                }
+            }
+
+            if (result == a)
+            {
+                Console.WriteLine("yes");
+            }
+            else
+            {
+                Console.WriteLine("no");
+            }
+        }
+    }
+}
+```
+```
