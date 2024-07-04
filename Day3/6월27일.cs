@@ -17,7 +17,7 @@ namespace ConsoleApp8
                 }
                 else
                 {
-   sum2 = sum2 + i;
+                    sum2 = sum2 + i;
                 }          
             }
             Console.WriteLine(sum1);
