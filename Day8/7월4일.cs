@@ -175,3 +175,27 @@ namespace OOOP07
 }
 ```
 ```
+<quiz03 소수구하기>
+using System.ComponentModel.Design;
+
+namespace helloworldApp
+{
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 2; i <= 100; i++)
+            {
+                for (int j = 2; j <= i; j++)
+                {
+                    if (j == i)
+                        Console.Write($" {j}");
+                    else if (i % j == 0)
+                        break;
+                }
+            }
+        }
+    }
+}
+```
