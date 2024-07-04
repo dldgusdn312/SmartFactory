@@ -98,3 +98,48 @@ namespace OOPApp
 }
 ```
 ```
+<interface 사용>
+namespace OOOP07
+{
+    class Horse
+    {
+        public void Run()
+        {
+            Console.WriteLine("말이 달리고 있습니다.");
+        }
+    }
+    class Angel
+    { }
+    interface IWing
+    {
+        public void Fly();
+    }
+    interface IWing2
+    {
+        public void Fly();
+    }
+    class Unicon : Horse, IWing
+    {
+        public void Fly()
+        {
+            Console.WriteLine("유니콘이 날고 있습니다.");
+        }
+        public void PerformMagic()
+        {
+            Console.WriteLine("마법을 사용합니다.");
+        }
+            
+    }
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Unicon jack = new Unicon();
+            jack.Run();
+            jack.Fly();
+            jack.PerformMagic();
+        }
+    }
+}
+```
+```
