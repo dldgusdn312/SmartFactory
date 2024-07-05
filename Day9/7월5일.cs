@@ -208,3 +208,40 @@ namespace bubblesort01
 }
 ```
 ```
+namespace propertyp1
+{
+    class Person
+    {
+
+        public string Name
+        {
+            get { return Name; }
+            set
+            {
+                if (value.Length == 0)
+                {
+                    throw new ArgumentException("이름이 입력되지 않았습니다");
+                }
+                else
+                {
+                    Name = value;
+                }
+            }
+        }
+    }
+    class Student
+    {
+        public string Name { get; set; } = "아무개";
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Person person = new Person();
+            person.Name = "";
+            Console.WriteLine(person.Name);
+        }
+    }
+}
+```
+```
