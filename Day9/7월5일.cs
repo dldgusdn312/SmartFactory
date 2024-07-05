@@ -146,3 +146,35 @@ namespace PrimeNumber
 }
 ```
 ```
+<로또 랜덤 뽑기 , 정렬 , 중복 x 교수님 정답>
+namespace LottoApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            List<int> LottoNumberList = new List<int>();
+            while (LottoNumberList.Count < 7)
+            {
+                int number = random.Next(1, 46);
+
+                if (!LottoNumberList.Contains(number))
+                    LottoNumberList.Add(number);
+            }
+            //보너스 번호 뽑기 , 0번지 첫번째 요소를 보너스 번호로 하자.
+            int bonusNumber = LottoNumberList[0];
+            LottoNumberList.RemoveAt(0);
+            //로또번호 6개만 정렬
+            LottoNumberList.Sort();
+            foreach (int i in LottoNumberList)
+            {
+                Console.WriteLine(i + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine($"보너스 번호 : {bonusNumber}");
+        }
+    }
+}
+```
+```
