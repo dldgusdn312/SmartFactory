@@ -296,3 +296,33 @@ namespace testapp03
 }
 ```
 ```
+<quiz02>
+namespace testapp03
+{
+    class Program
+    {
+        static void Main()
+        {
+            
+            Random random = new Random();
+      
+            int[] score = new int[3];
+            for (int i = 0; i < score.Length; i++)
+            {
+                score[i] = random.Next(70, 101);
+            }
+           
+            int total = score.Sum();
+            int high = score.Max();
+            int low = score.Min();
+            double average = score.Average();
+
+            Console.WriteLine($"총점: {total}");
+            Console.WriteLine($"가장 높은 점수: {high}");
+            Console.WriteLine($"가장 낮은 점수: {low}");
+            Console.WriteLine($"평균 점수 : {average:F2}"); 
+        }
+    }
+}
+```
+```
