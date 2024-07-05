@@ -276,3 +276,23 @@ namespace propertyp1
 }
 ```
 ```
+namespace testapp03
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr4 = new int[5] { 21, 98, 43, 27, 13 };
+            int[] arr5 = { 21, 98, 43, 27, 13 };
+
+            Console.WriteLine($"Max : {arr4.Max()}");
+            Console.WriteLine($"Min : {arr4.Min()}");
+            Console.WriteLine($"Sum : {arr4.Sum()}");
+            Console.WriteLine($"Average : {arr4.Average()}");
+            Console.WriteLine($"Count : {arr4.Count()}");
+
+        }
+    }
+}
+```
+```
