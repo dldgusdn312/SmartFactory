@@ -330,3 +330,31 @@ namespace testapp03
 }
 ```
 ```
+<대문자 소문자 숫자 특수문자 골라내기>
+namespace ConsoleApp11
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string words = Console.ReadLine();
+            int bigCnt = 0, smallCnt = 0, numberCnt = 0, specialCnt = 0;
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (words[i] >= 'A' && words[i] <= 'Z')
+                    bigCnt++;
+                else if (words[i] >= 'a' && words[i] <= 'z')
+                    smallCnt++;
+                else if (words[i] >= '0' && words[i] <= '9')
+                    numberCnt++;
+                else specialCnt++;
+
+            }
+            Console.WriteLine($"대문자 : {bigCnt}");
+            Console.WriteLine($"소문자 : {smallCnt}");
+            Console.WriteLine($"숫자 : {numberCnt}");
+            Console.WriteLine($"특수문자 : {specialCnt}");
+        }
+    }
+}
+```
