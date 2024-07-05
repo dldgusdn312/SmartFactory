@@ -321,6 +321,10 @@ namespace testapp03
             Console.WriteLine($"가장 높은 점수: {high}");
             Console.WriteLine($"가장 낮은 점수: {low}");
             Console.WriteLine($"평균 점수 : {average:F2}"); 
+            // Console.WriteLine($"총점 : {score.Sum()}");
+// Console.WriteLine($"MAX : {score.Max()}");
+// Console.WriteLine($"MIN : {score.Min()}");
+// Console.WriteLine($"평균 점수 : {score.Average():F2}");
         }
     }
 }
