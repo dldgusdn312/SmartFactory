@@ -32,3 +32,21 @@ namespace PrimeNumber
 }
 ```
 ```
+<random / 로또>
+
+using System.Security.Cryptography;
+
+namespace PrimeNumber
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            for (int i = 0; i < 7; i++) { 
+            Console.WriteLine(random.Next(1,46));
+            }
+        }
+    }
+}
+```
