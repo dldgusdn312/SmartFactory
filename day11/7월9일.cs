@@ -117,3 +117,23 @@ namespace Facotrial01
 }
 ```
 ```
+<팩토리얼 함수 02 간단 >
+    namespace Facotrial01
+{
+    internal class Program
+    {
+            static void Main(string[] args)
+            {
+                int n = 5;
+                int[] arr = new int[n + 1];
+                arr[0] = 1;
+                for (int i = 1; i <= n; i++)
+                {
+                    arr[i] = i * arr[i - 1];
+                }
+            Console.WriteLine(arr[n]);
+            }
+        }
+}
+```
+```
