@@ -137,3 +137,32 @@ namespace Facotrial01
 }
 ```
 ```
+<팩토리얼 합계>
+using System.ComponentModel.Design;
+
+namespace FactoriaRecursive
+{
+    internal class Program
+    {
+        static int Factorial(int n)
+        {
+            if (n == 1)
+            {
+                Console.WriteLine(n);
+                return 1;
+        }
+        else 
+        {
+            Console.WriteLine(n);
+            return n* Factorial(n - 1);
+    }
+}
+        static void Main(string[] args)
+        {
+            int n = 4;
+            Console.WriteLine($"{n} : Factorial 합 : {Factorial(n)}");
+        }
+    }
+}
+```
+```
