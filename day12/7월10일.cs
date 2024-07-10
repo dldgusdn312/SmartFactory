@@ -130,3 +130,25 @@ namespace indexerTest
 }
 ```
 ```
+namespace code100
+{
+    enum TrafficLights { Green, Red, blue };
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine((TrafficLights)i);
+            }
+            TrafficLights r = TrafficLights.Red;
+            TrafficLights g = TrafficLights.Green;
+            TrafficLights b = TrafficLights.blue;
+            Console.WriteLine(r);
+            Console.WriteLine(g);
+            Console.WriteLine(b);
+        }
+    }
+}
+```
+```
