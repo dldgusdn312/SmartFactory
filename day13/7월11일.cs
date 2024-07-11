@@ -197,3 +197,51 @@ namespace OOPTest005
 }
 ```
 ```
+<interface>
+namespace interFace01
+{
+    interface Maker
+    {
+        void MadeWhere();
+        void Warehouse();
+    }
+    class Korea : Maker
+    {
+        public void MadeWhere()
+        {
+            Console.WriteLine("국산입니다.");
+        }
+        public void Warehouse()
+        {
+            Console.WriteLine("상품 등록 완료");
+        }
+
+        class China : Maker
+        {
+            public void MadeWhere()
+            {
+                Console.WriteLine("중국산입니다.");
+            }
+            public void Warehouse()
+            {
+                Console.WriteLine("상품 등록 완료");
+            }
+        }
+
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                Maker korea = new Korea();
+                korea.MadeWhere();
+                korea.Warehouse();
+
+                korea = new China();
+                korea.MadeWhere();
+                korea.Warehouse();
+            }
+        }
+    }
+}
+```
+```
