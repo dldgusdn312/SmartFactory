@@ -245,3 +245,29 @@ namespace interFace01
 }
 ```
 ```
+namespace interFace03
+{
+    struct School
+    {
+        public string schName;
+        public string stName;
+        public int stGrade;
+
+        
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            School sc;
+            sc.schName = "레이크사이드 고등학교";
+            sc.stName = "빌 게이츠";
+            sc.stGrade = 3; 
+
+            Console.WriteLine($"{sc.stName}학생은 {sc.schName}이며, {sc.stGrade}학년입니다.");
+           
+        }
+    }
+}
+```
+```
