@@ -114,3 +114,57 @@ namespace ConsoleApp16
 }
 ```
 ```
+namespace ListTestApp02
+{
+    class Album
+    {
+        //private int no;
+        //private string title;
+        //private stirng artist;
+        public int No { get; set; }
+        public string Title { get; set; }
+        public string Artist { get; set; }
+
+
+    }
+    class NewjeansAlbum : Album
+    {
+
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<NewjeansAlbum> albumList = new List<NewjeansAlbum>();
+            NewjeansAlbum album = new NewjeansAlbum();
+            album.No = 1;
+            album.Title = "hypeboy";
+            album.Artist = "뉴진스";
+            Console.WriteLine(album.No);
+            Console.WriteLine(album.Title);
+            Console.WriteLine(album.Artist);
+            albumList.Add(album);
+
+            album = new NewjeansAlbum();
+            album.No = 2;
+            album.Title = "super shy";
+            album.Artist = "뉴진스";
+            albumList.Add(album);
+
+            //album = new NewjeansAlbum(3,"ETA","해린");
+            //albumList.Add(album);
+
+            foreach(NewjeansAlbum na in albumList)
+            {
+                Console.WriteLine(na.No);
+                Console.WriteLine(na.Title);
+                Console.WriteLine(na.Artist);
+                Console.WriteLine();
+            }
+
+
+        }
+    }
+}
+```
+```
