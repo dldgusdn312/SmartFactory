@@ -70,3 +70,47 @@ namespace ConsoleApp16
 }
 ```
 ```
+<Quiz2>
+namespace ConsoleApp16
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+
+            List<int> num = new List<int>();
+            for (int i = 0; i < 7; i++)
+            {
+                num.Add(random.Next(1, 101));
+            }
+
+            num.Sort();
+            num.Reverse();
+
+            foreach (int i in num)
+            {
+                Console.Write($"{i} ");
+            }
+
+            num.Insert(0, -7);
+            num.Add(-100);
+
+           Console.WriteLine();
+            foreach (int i in num)
+            {
+                Console.Write($"{i} ");
+            }
+
+            num.Remove(-7);
+
+           Console.WriteLine();
+            foreach (int i in num)
+            {
+                Console.Write($"{i} ");
+            }
+        }
+    }
+}
+```
+```
