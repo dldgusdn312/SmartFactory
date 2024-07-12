@@ -36,3 +36,37 @@ namespace OOPdelegateApp
 }
 ```
 ```
+<list 사용>
+namespace ConsoleApp16
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numberList = new List<int>();
+            int num = 10;
+            for (int i = 0; i < 5; i++)
+            {
+                numberList.Add(i);
+                num += 10;
+            }
+
+            Console.WriteLine($"배열요소의 수 : {numberList.Count}");
+            Console.WriteLine($"배열의 크기 : {numberList.Capacity}");
+            numberList.RemoveAt(3);
+            numberList.Remove(20);
+            numberList.Insert(0, 5);
+            numberList.Sort();
+            numberList.Reverse();
+           
+
+            foreach (int i in numberList)
+            {
+                Console.WriteLine(i);
+            }
+                
+        }
+    }
+}
+```
+```
