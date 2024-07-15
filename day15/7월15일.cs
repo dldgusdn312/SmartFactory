@@ -48,3 +48,41 @@ namespace ObjectArray
 }
 ```
 ```
+using System.Collections.Generic;
+
+namespace Listobject1
+{
+    class Student
+    {
+        public string Name { get; set; }
+
+    
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] arr = new string[3] { "이순신", "강감찬", "을지문덕" };
+            List<Student>studentList = new List<Student>();
+
+            Student st1 = new Student();
+            st1.Name = "이순신";
+            Student st2 = new Student();
+            st1.Name = "강감찬";
+            Student st3 = new Student();
+            st1.Name = "을지문덕";
+
+            studentList.Add(st1);
+            studentList.Add(st2);
+            studentList.Add(st3);
+
+            foreach (Student st in studentList)
+            {
+                Console.WriteLine(st.Name);
+            }
+
+        }
+    }
+}
+```
+```
