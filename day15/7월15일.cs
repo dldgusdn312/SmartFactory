@@ -86,3 +86,47 @@ namespace Listobject1
 }
 ```
 ```
+<quiz1>
+using System.Collections.Generic;
+
+namespace Listobject1
+{
+    class Car
+    {
+        public string Brand { get; set; }
+        public int Speed {  get; set; }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+          
+            List<Car>carList = new List<Car>();
+
+            Car car1 = new Car();
+            Car car2 = new Car();
+            Car car3 = new Car();
+            car1.Brand = "현대";
+            car1.Speed = 300;
+            
+            car2.Brand = "기아";
+            car2.Speed = 280;
+           
+            car3.Brand = "BMW";
+            car3.Speed = 290;
+
+            carList.Add(car1);
+            carList.Add(car2);
+            carList.Add(car3);
+
+            foreach (Car i in carList)
+            {
+                Console.WriteLine(i.Brand);
+                Console.WriteLine(i.Speed);
+            }
+
+        }
+    }
+}
+```
+```
