@@ -130,3 +130,31 @@ namespace Listobject1
 }
 ```
 ```
+<quiz2>
+//using Microsoft.VisualBasic;
+
+using System.Runtime.CompilerServices;
+
+namespace DateTimequiz
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("년도 : ");
+            int year = int.Parse(Console.ReadLine());
+            Console.Write("월 : ");
+            int month = int.Parse(Console.ReadLine());
+            Console.Write("일 : ");
+            int day = int.Parse(Console.ReadLine());
+
+            DateTime dateTime = new DateTime(year, month, day);
+            Console.WriteLine($"입력한 날짜 : {dateTime.ToString("yyyy-MM-dd")}");
+            DateTime Now = DateTime.Now;
+            Console.WriteLine($"현재 시간 : {Now.ToString("yyyy-MM-dd HH:mm:ss")}");
+    
+        }
+    }
+}
+```
+```
