@@ -152,7 +152,19 @@ namespace DateTimequiz
             Console.WriteLine($"입력한 날짜 : {dateTime.ToString("yyyy-MM-dd")}");
             DateTime Now = DateTime.Now;
             Console.WriteLine($"현재 시간 : {Now.ToString("yyyy-MM-dd HH:mm:ss")}");
-    
+
+            //교수님 방식
+            Console.WriteLine();
+            Console.Write("입력한 날짜 : ");
+            string time = new DateTime(year, month, day).ToString("yyyy-MM-dd");
+            Console.WriteLine(time);
+            Console.Write("현재 시간 : ");
+            String currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            Console.WriteLine(currentTime);
+        }
+    }
+}
+
         }
     }
 }
