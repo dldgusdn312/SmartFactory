@@ -112,3 +112,25 @@ END;
 /
   ```
   ```
+<퀴즈 while/for문 사용>
+--1번 while문
+DECLARE
+I NUMBER := 1;
+BEGIN
+WHILE I < 10 LOOP
+DBMS_OUTPUT.PUT_LINE('현재 I의 값 : ' || I);
+I := I + 2;
+END LOOP;
+END;
+/
+--2번 for문
+BEGIN
+FOR I IN 1..10 LOOP
+IF MOD(I,2) = 1 THEN
+DBMS_OUTPUT.PUT_LINE('현재 I의 값 : ' || I);
+END IF;
+END LOOP;
+END;
+/
+```
+```
