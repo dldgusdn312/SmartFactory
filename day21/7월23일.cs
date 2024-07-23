@@ -103,5 +103,12 @@ V_NUM := V_NUM + 1;
 END LOOP;
 END;
 /
+<FOR문>
+BEGIN
+FOR I IN 0..4 LOOP
+DBMS_OUTPUT.PUT_LINE(I);
+END LOOP;
+END;
+/
   ```
   ```
