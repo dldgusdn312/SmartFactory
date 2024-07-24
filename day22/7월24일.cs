@@ -65,3 +65,25 @@ CLOSE C1;
  END;
  /
    ```
+--18-3
+ DECLARE
+ V_DEPT_ROW DEPT%ROWTYPE;
+ --명시적 커서 선언
+ CURSOR c1 IS SELECT DEPTNO,DNAME,LOC FROM DEPT;
+ BEGIN
+ --커서 열기
+ OPEN c1;
+ LOOP 
+ FETCH c1 INTO V_DEPT_ROW;
+ --커서의 모든 행을 읽기 위해 속성 지정
+ EXIT WHEN c1%NOTFOUND;
+ DBMS_OUTPUT.PUT_LINE('부서번호 : ' || V_DEPT_ROW.DEPTNO || 
+    '부서이름 : ' || V_DEPT_ROW.DNAME ||
+    '부서위치 : ' || V_DEPT_ROW.LOC);
+ END LOOP;
+--커서닫기 리소스 반환
+CLOSE c1;
+ END;
+ /
+   ```
+   ```
