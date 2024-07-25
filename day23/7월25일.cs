@@ -115,6 +115,35 @@ namespace HashTable
 }
 ```
 ```
+<예외처리 1>
+    using System.ComponentModel;
+
+namespace ExceptionApp01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = 5;
+            int b = 0;
+            try
+            {
+                int result = a / b;
+                Console.WriteLine(result);
+            }
+            catch(DivideByZeroException e) 
+            {
+                Console.WriteLine("0으로 나누어 예외가 발생하였습니다.");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("예외가 발생하였습니다.");
+            }
+        }
+    }
+}
+```
+```
 <예외처리 2>
     namespace ExceptionApp02
 {
