@@ -248,3 +248,27 @@ namespace LinqExam02
 }
 ```
 ```
+<lamdatest>
+namespace LamdaTest01
+{
+    class Calculator
+    {
+        public int Plus(int a, int b)
+        {
+            return a + b;
+        }
+    }
+    internal class Program
+    {
+        delegate int Calculate(int a, int b);
+        static void Main(string[] args)
+        {
+            Calculator c = new Calculator();
+            Calculator calc = c.Plus;
+
+            Console.WriteLine(calc(10,20));
+        }
+    }
+}
+```
+```
