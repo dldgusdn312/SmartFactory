@@ -321,3 +321,24 @@ namespace LamdaExam02
 }
 ```
 ```
+<lamda3>
+namespace LamdaApp03
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Action<string> logOut = (txt) =>
+            {
+                Console.WriteLine(DateTime.Now + ": " + txt);
+            };
+
+            logOut("정처기 실기 붙자 제발");
+
+            Func<double> pi = () => 3.141592;
+            Console.WriteLine(pi());
+        }
+    }
+}
+```
+```
