@@ -272,3 +272,33 @@ namespace LamdaTest01
 }
 ```
 ```
+<lamda>
+namespace LamdaTest01
+{
+    //class Calculator
+    //{
+    //    public int Plus(int a, int b)
+    //    {
+    //        return a + b;
+    //    }
+    //}
+    internal class Program
+    {
+        delegate int Calculate(int a, int b);
+        static void Main(string[] args)
+        {
+            Calculate calc = delegate (int a,int b)
+            {
+
+            return a + b;
+            };
+        
+            //Calculator c = new Calculator();
+            //Calculator calc = c.Plus;
+
+            Console.WriteLine(calc(100,200));
+        }
+    }
+}
+```
+```
