@@ -118,3 +118,24 @@ namespace FileExam_newjeans
 }
 ```
 ```
+namespace fileExam05
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string path = @"C:\Temp\a001.log";
+            using (FileStream fs = new FileStream(path, FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                {
+                    sw.WriteLine("정처기 가즈아");
+                    sw.WriteLine("Anderson");
+                    sw.WriteLine(32000);
+                }
+            }
+        }
+    }
+}
+```
+```
