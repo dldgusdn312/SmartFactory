@@ -158,3 +158,30 @@ namespace FileExam05_Basic10
     }
 ```
 ```
+namespace ThreadTest02
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread t = new Thread(threadFunc);
+            t.IsBackground = true;
+            t.Start();
+            t.Join();
+            string mtName = Thread.CurrentThread.Name;
+            Console.WriteLine($"{mtName} 프로그램 종료");
+        }
+           static void threadFunc()
+           {
+            Console.WriteLine("7초 후에 프로그램 종료");
+            Thread.Sleep(7000);
+
+            Thread.CurrentThread.Name = "개발부장";
+            string mtName = Thread.CurrentThread.Name;
+            Console.WriteLine($"{mtName} 프로그램 종료");
+      
+           }
+    }
+}
+```
+```
