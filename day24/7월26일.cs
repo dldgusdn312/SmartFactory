@@ -94,3 +94,27 @@ namespace FileExam02
 }
 ```
 ```
+<복사하기>
+namespace FileExam_newjeans
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string path = @"C:\Temp\a001.png";
+            string copyPic = @"C:\Temp\a002.png";
+            try
+            {
+                byte[] pictureBytes = File.ReadAllBytes(path);
+                File.WriteAllBytes(copyPic, pictureBytes);
+                Console.WriteLine("복사 성공");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}
+```
+```
