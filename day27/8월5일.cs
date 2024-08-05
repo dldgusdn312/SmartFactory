@@ -194,7 +194,7 @@ SELECT * FROM Product;
 SELECT * FROM Production;
 ```
 ```
-<datagridview>
+<datagridview01>
 using System.Windows.Forms;
 
 namespace DataGridViewApp
@@ -221,6 +221,36 @@ namespace DataGridViewApp
             dataGridView.Rows.Add("3", "이현우", "010-3333-3333");
         }
     }
+}
+```
+```
+<datagridview02>
+namespace DataGridViewApp02
+{
+    class Student
+    {
+        public string No { get; set; }
+        public string Name { get; set; }
+        public string HP { get; set; }
+    }
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var dataList = new List<Student>()
+            {
+                new Student { No = "1", Name = "홍길동", HP = "010-1111-1111" },
+                new Student { No = "2", Name = "이순신", HP = "010-2222-2222" },
+                new Student { No = "3", Name = "강감찬", HP = "010-3333-3333" }
+               };
+             dataGridView1.DataSource = dataList;
+            }
+        }
 }
 ```
 ```
