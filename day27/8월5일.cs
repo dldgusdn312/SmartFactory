@@ -254,3 +254,42 @@ namespace DataGridViewApp02
 }
 ```
 ```
+<DataGridView03 오라클에서 데이터 가져오기>
+using Oracle.ManagedDataAccess.Client;
+using System.Data;
+using System.Windows.Forms;
+
+namespace DataGridView03
+{
+    public partial class Form1 : Form
+    {
+        private string connectionString = "User Id=SCOTT;Password=TIGER;Data Source=localhost:9000/XE;";
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT id, name, hp FROM student";
+                    OracleDataAdapter adapter = new OracleDataAdapter(query, connection);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dataGridView1.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"에러: {ex.Message}");
+                }
+            }
+        }
+    }
+}
+```
+```
