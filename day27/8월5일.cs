@@ -193,3 +193,34 @@ CREATE SEQUENCE SEQ_PRODUCTION START WITH 1 INCREMENT BY 1;
 SELECT * FROM Product;
 SELECT * FROM Production;
 ```
+```
+<datagridview>
+using System.Windows.Forms;
+
+namespace DataGridViewApp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            dataGridView.Columns.Add("ID", "번호");
+            dataGridView.Columns.Add("NAME", "이름");
+            dataGridView.Columns.Add("HP", "전화번호");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView.Rows.Add(tbID.Text,tbNAME.Text,tbHP.Text);
+            dataGridView.Rows.Add("1", "홍길동", "010-1111-1111");
+            dataGridView.Rows.Add("2", "이순신", "010-2222-2222");
+            dataGridView.Rows.Add("3", "이현우", "010-3333-3333");
+        }
+    }
+}
+```
+```
