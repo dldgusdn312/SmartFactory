@@ -180,3 +180,65 @@ namespace DataGridapp04
 }
 ```
 ```
+<AccessForm 배우기>
+<Form1 code>
+namespace AccessForm
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnOpenForm2_Click(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2(this, "안녕하세요");
+            frm2.ShowDialog();
+        }
+    }
+}
+```
+```
+<Form2 code>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AccessForm
+{
+    public partial class Form2 : Form
+    {
+        private Form1 frm1;
+        private string str;
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        public Form2(object frm)
+        {
+            InitializeComponent();
+            frm1 = (Form1)frm;
+        }
+        public Form2(object frm, string _str)
+        {
+            InitializeComponent();
+            frm1 = (Form1)frm;
+            str = _str;
+        }
+
+        private void btnChangeMainLabel_Click(object sender, EventArgs e)
+        {
+            frm1.label1.Text = "Form2에서 변경함.";
+        }
+    }
+}
+```
+```
