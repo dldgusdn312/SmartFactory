@@ -109,3 +109,74 @@ namespace ProgressBar
 }
 ```
 ```
+<데이터그리뷰 응용>
+using System.Buffers;
+using System.Xml.Linq;
+
+namespace DataGridapp04
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            dataGridView1.Columns.Add("No", "번호");
+            dataGridView1.Columns.Add("Name", "이름");
+            dataGridView1.Columns.Add("HP", "핸드폰번호");
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            string no = textBoxNo.Text;
+            string name = textBoxName.Text;
+            string hp = textBoxHP.Text;
+
+
+            if (!string.IsNullOrEmpty(no) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(hp))
+            {
+                dataGridView1.Rows.Add(no, name, hp);
+                textBoxNo.Clear();
+                textBoxName.Clear();
+                textBoxHP.Clear();
+            }
+            else
+            {
+                MessageBox.Show("모든 필드를 입력해 주세요.");
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.Remove(row);
+            }
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = textBoxSearch.Text;
+            bool found = false;
+
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows) //선택된 row에서 동일한 이름의 값을 찾음 
+            {
+                if (row.Cells["Name"].Value != null && row.Cells["Name"].Value.ToString().Equals(searchValue))
+                {
+                    row.Selected = true;
+                    found = true;
+                    MessageBox.Show("찾았습니다.");
+                    return;
+                }
+
+            }
+            if (!found)
+                MessageBox.Show("해당 이름이 없습니다!");
+        }
+    }
+}
+```
+```
