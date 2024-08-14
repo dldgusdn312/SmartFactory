@@ -106,10 +106,45 @@ namespace SocketTCPServer
             clientSocket.Shutdown(SocketShutdown.Both);
             clientSocket.Close();
 
-
-
         }
     }
 }
 ```
+```
+<소켓 클라이언트>
+using System.Net;
+using System.Net.Sockets;
+using System.Net.WebSockets;
+using System.Text;
+
+namespace SocketTCPClient
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1. Client 소켓 만들기, 서버 접속을 위한 소켓 만들기
+            IPAddress serverAddr = IPAddress.Parse("192.168.0.2");
+            int port = 13000;
+
+            // 클라이언트 소켓 생성
+            Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            // 서버에 연결
+            clientSocket.Connect(new IPEndPoint(serverAddr, port));
+            Console.WriteLine("서버에 연결되었습니다.");
+
+            byte[] bytes = new byte[1024];
+            int bytesReceived = clientSocket.Receive(bytes);
+
+            // 메시지 수신
+            string response = Encoding.UTF8.GetString(bytes, 0, bytesReceived);
+            Console.WriteLine($"서버로부터 받은 메시지: {response}");
+
+            // 클라이언트 소켓 종료
+            clientSocket.Shutdown(SocketShutdown.Both);
+            clientSocket.Close();
+        }
+    }
+}
 ```
