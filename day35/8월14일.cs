@@ -69,3 +69,47 @@ namespace SimpleTCPClient
     }
 }
 ```
+```
+<소켓 서버>
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
+namespace SocketTCPServer
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1.ServerSocket 만들기
+            IPAddress localAddr = IPAddress.Parse("192.168.0.5");
+            int port = 13000;
+            Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+           //2.Bind
+           serverSocket.Bind(new IPEndPoint(localAddr, port));
+            //3.Listen
+            serverSocket.Listen(1);
+            Console.WriteLine("연결을 기다리는중,,,,");
+           //4.Accept
+           Socket clientSocket = serverSocket.Accept();
+            Console.WriteLine("연결 성공 !");
+            //5.Read/Write
+            string message = "안녕하세요 푸바오님";
+            byte[] bytes = new byte[1024];
+            byte[] data = Encoding.UTF8.GetBytes(message);
+
+            clientSocket.Send(data);
+            Console.WriteLine($"전송한 메시지 : {message}");
+           //6.Close
+
+            clientSocket.Shutdown(SocketShutdown.Both);
+            clientSocket.Close();
+
+
+
+        }
+    }
+}
+```
+```
