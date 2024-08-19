@@ -244,3 +244,114 @@ namespace BinaryReaderWriter
 }
 ```
 ```
+<MultiThreadServer>
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace MultiThreadServerV1
+{
+    internal class Program
+    {
+        static int cnt = 0;
+        
+        static void Main(string[] args)
+        {
+            Thread serverThread = new Thread(serverFunc);
+            serverThread.IsBackground = true;
+            serverThread.Start();
+            serverThread.Join();
+
+
+            Console.WriteLine("서버 프로그램을 종료합니다.");
+        }
+        private static void serverFunc(object obj)
+        {
+            using (Socket srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+            {
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 13000);
+                srvSocket.Bind(endPoint);
+                srvSocket.Listen(50);
+
+                Console.WriteLine("서버 시작 ...");
+                while (true)
+                {
+                    Socket cliSocket = srvSocket.Accept();
+                    cnt++;
+                    Thread workThread = new Thread(new ParameterizedThreadStart (workFunc));
+                    workThread.IsBackground=true;
+                    workThread.Start(cliSocket);
+
+                }
+            }
+        }
+        private static void workFunc(object obj)
+        {
+            byte[] recvBytes =  new byte[2048];
+            Socket cliSocket = (Socket)obj;
+            int nRecv = cliSocket.Receive(recvBytes);
+
+            string txt = Encoding.UTF8.GetString(recvBytes,0,nRecv);
+            Console.WriteLine($"클라이언트 번호 ({cnt} : {txt}");
+            byte[] sendBytes = Encoding.UTF8.GetBytes("Hello : " + txt);
+            cliSocket.Send(sendBytes);
+            cliSocket.Close();
+
+        }
+    }
+}
+```
+```
+<MultiServerTestClient>
+
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
+
+namespace MultiServerTestClient
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread clientThread = new Thread(clientFunc);
+            clientThread.Start();
+            clientThread.IsBackground = true;
+            clientThread.Join();
+
+            Console.WriteLine("클라이언트가 종료 되었습니다.");
+        }
+        static void clientFunc(object obj)
+        {
+            try
+            {
+                //1.소켓만들기
+                Socket socket = new Socket(AddressFamily.InterNetwork,
+                                        SocketType.Stream,
+                                        ProtocolType.Tcp);
+                //2.연결
+                EndPoint serverEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 13000);
+                socket.Connect(serverEP);
+                //3.Read, Write
+                byte[] buffer = Encoding.UTF8.GetBytes("잘해봅시다.");
+                socket.Send(buffer);
+
+                byte[] recvBytes = new byte[1024];
+                int nRecv = socket.Receive(recvBytes);
+
+                string txt = Encoding.UTF8.GetString(recvBytes, 0, nRecv);
+                Console.WriteLine(txt);
+                //4.종료
+                socket.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+    }
+}
+```
+```
