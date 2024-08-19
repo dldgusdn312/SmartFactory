@@ -164,3 +164,55 @@ namespace WorkThread01
 
 ```
 ```
+<ThreadSyncError>
+using System;
+using System.Threading;
+namespace ThreadSyncError
+{
+    class Program
+    {
+        static int sharedValue = 0;
+        private static readonly object lockObject = new object();
+        
+
+        static void Main(string[] args)
+        {
+            Thread incrementThread = new Thread(Increment);
+            Thread decrementThread = new Thread(Decrement);
+
+            // 스레드 시작
+            incrementThread.Start();
+            decrementThread.Start();
+
+            // 스레드가 종료되기를 기다림
+            incrementThread.Join();
+            decrementThread.Join();
+
+            Console.WriteLine($"최종 값: {sharedValue}");
+        }
+
+        static void Increment()
+        {
+            lock (lockObject)
+            {
+                for (int i = 0; i < 100000; i++)
+                {
+                    sharedValue++;
+                }
+            }
+        }
+
+        static void Decrement()
+        {
+            lock (lockObject)
+            {
+                for (int i = 0; i < 100000; i++)
+                {
+                    sharedValue--;
+                }
+            }
+        }
+    }
+}
+```
+```
