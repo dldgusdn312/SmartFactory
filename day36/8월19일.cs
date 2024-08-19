@@ -129,9 +129,10 @@ namespace WorkThread01
 {
     internal class Program
     {
+        //스레드 동기화
+        private static readonly object lockObject = new object();
         static void Main(string[] args)
         {
-            //Main Thread
             int threadCount = 5;
 
             Thread[] threads = new Thread[threadCount];
@@ -147,11 +148,19 @@ namespace WorkThread01
         }
         static void DoWork(int index)
         {
-            Console.WriteLine($"스레드 {index} 시작 : 작업을 수행 중...");
-            Thread.Sleep(1000);
-            Console.WriteLine($"스레드 {index} 완료 : 작업이 끝났습니다.");
+            lock (lockObject)
+            {
+                Console.WriteLine($"스레드 {index} 시작 : 작업을 수행 중...");
+                Thread.Sleep(1000);
+                Console.WriteLine($"스레드 {index} 완료 : 작업이 끝났습니다.");
+            }
+            //lock (lockObject)
+            //{
+                
+            //}
         }
     }
 }
+
 ```
 ```
