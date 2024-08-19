@@ -216,3 +216,31 @@ namespace ThreadSyncError
 }
 ```
 ```
+<BinaryReaderWriter>
+namespace BinaryReaderWriter
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string path = @"C:\Temp\pic1.png";
+            byte[] picture;
+            using (FileStream fs = new FileStream(path, FileMode.Open))
+            {
+                BinaryReader br = new BinaryReader(fs);
+                picture = br.ReadBytes((int)fs.Length);
+                br.Close();
+            }
+            string path2 = @"‪C:\Temp\pic2.png";
+            using (FileStream fs = new FileStream(path2, FileMode.Create))
+            {
+                BinaryWriter bw = new BinaryWriter(fs);
+                bw.Write(picture);
+                bw.Flush(); //이진파일 Flush() 신경
+                bw.Close();
+            }
+        }
+    }
+}
+```
+```
