@@ -100,3 +100,27 @@ namespace IOTest
 }
 ```
 ```
+<Thread Quiz>
+namespace ThreadQuiz
+{
+    internal class Program
+    {
+        static void Print()
+        {
+            Thread.Sleep(3000);
+            Console.WriteLine("gg");
+        }
+        static void Main(string[] args)
+        {
+            Thread T1 = new Thread(new ThreadStart(Print));
+            //t1.IsBackground = true;
+            T1.Start();
+            //t1.Join();
+
+
+            Console.WriteLine("Main 프로그램 종료");
+        }
+    }
+}
+```
+```
