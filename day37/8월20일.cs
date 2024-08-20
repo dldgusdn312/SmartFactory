@@ -110,3 +110,127 @@ namespace SimpleTCPClient_using
 }
 ```
 ```
+<EchoServer>
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
+
+namespace MultipleEchoServer
+{
+    internal class Program
+    {
+        static int cnt = 0;
+        static void Main(string[] args)
+        {
+            Thread serverThread = new Thread(ServerAction);
+            serverThread.IsBackground = true;
+
+            serverThread.Start(); serverThread.Join();
+            Console.WriteLine("Echo Server 메인프로그램 종료!!!");
+        }
+        private static void ServerAction(object obj)
+        {
+            using (Socket srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+            {
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 13000);
+
+                srvSocket.Bind(endPoint);
+                srvSocket.Listen(50);
+
+                Console.WriteLine("메아리 서버(Echo Server) 시작...");
+                while (true)
+                {
+                    Socket cliSocket = srvSocket.Accept(); //여기까지 동작은 공통입니다.
+                    cnt++; //클라이언트를 구분하기 위한 카운트 증가
+
+                    //Read,Write 기능은 따로 스레드를 만들어 
+                    Thread workThread = new Thread(new ParameterizedThreadStart(workAction));
+                    workThread.IsBackground = true;
+                    workThread.Start(cliSocket);
+                }
+            }
+        } // end of serveraction
+        private static void workAction(object obj)
+        {
+            byte[] recvBytes = new byte[1024];
+            Socket cliSocket = (Socket)obj;
+            int nRecv = cliSocket.Receive(recvBytes);
+
+            string echotxt = Encoding.UTF8.GetString(recvBytes, 0, nRecv);
+            Console.WriteLine($"클라이언트로부터 받은 번호와 메세지 ({cnt}) : {echotxt}");
+            byte[] echoMessage = Encoding.UTF8.GetBytes("Echo : " + echotxt);
+            cliSocket.Send(echoMessage);
+            cliSocket.Close();
+        } // end of workaction
+    }
+}
+```
+```
+<EchoClient>
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
+
+namespace MultipleEchoClient
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread clientThread = new Thread(clientFunc);
+            clientThread.Start();
+            clientThread.IsBackground = true;
+            clientThread.Join();
+
+            Console.WriteLine("Echo Server가 종료 되었습니다.");
+        }
+        static void clientFunc(object obj)
+        {
+            try
+            {
+                // 1. 소켓 만들기
+                Socket socket = new Socket(AddressFamily.InterNetwork,
+                                           SocketType.Stream,
+                                           ProtocolType.Tcp);
+
+                // 2. 서버에 연결
+                EndPoint serverEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 13000);
+                socket.Connect(serverEP);
+
+                Console.WriteLine("Echo Server에 연결되었습니다. 종료하려면 'exit'를 입력하세요.");
+
+                while (true)
+                {
+                    // 3. 메시지 입력 및 전송
+                    Console.Write("메세지 작성: ");
+                    string userInput = Console.ReadLine(); // 사용자 입력 받기
+
+                    // 'exit' 입력 시 프로그램 종료
+                    if (userInput.ToLower() == "exit")
+                    {
+                        break;
+                    }
+
+                    byte[] echoBuffer = Encoding.UTF8.GetBytes(userInput);
+                    socket.Send(echoBuffer);
+
+                    // 4. 서버로부터 응답 수신
+                    byte[] recvBytes = new byte[1024];
+                    int nRecv = socket.Receive(recvBytes);
+
+                    string echotxt = Encoding.UTF8.GetString(recvBytes, 0, nRecv);
+                    Console.WriteLine($"{echotxt}");
+                }
+
+                // 5. 소켓 종료
+                socket.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+```
