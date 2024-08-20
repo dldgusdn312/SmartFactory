@@ -234,3 +234,159 @@ namespace MultipleEchoClient
 }
 ```
 ```
+<QuizServer>
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
+
+namespace QuizServer
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread serverThread = new Thread(ServerAction);
+            serverThread.IsBackground = true;
+
+            serverThread.Start();
+            serverThread.Join();
+            Console.WriteLine("퀴즈 서버 메인 프로그램 종료!!!");
+        }
+
+        private static void ServerAction(object obj)
+        {
+            using (Socket srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+            {
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 13000);
+
+                srvSocket.Bind(endPoint);
+                srvSocket.Listen(50);
+
+                Console.WriteLine("퀴즈 서버가 시작되었습니다...");
+                while (true)
+                {
+                    Socket cliSocket = srvSocket.Accept();
+                    Thread workThread = new Thread(new ParameterizedThreadStart(QuizAction));
+                    workThread.IsBackground = true;
+                    workThread.Start(cliSocket);
+                }
+            }
+        }
+
+        private static void QuizAction(object obj)
+        {
+            Socket cliSocket = (Socket)obj;
+            byte[] buffer = new byte[1024];
+            string[] questions = {
+                "문제 1: C#의 창시자는?\n1. Anders Hejlsberg\n2. James Gosling\n3. Bjarne Stroustrup",
+                "문제 2: HTTP의 기본 포트 번호는?\n1. 21\n2. 80\n3. 443",
+                "문제 3: OOP에서 상속을 제공하는 키워드는?\n1. class\n2. interface\n3. extends"
+            };
+            int[] answers = { 1, 2, 3 };  // 정답: 1, 2, 3
+
+            for (int i = 0; i < questions.Length; i++)
+            {
+                // 문제 전송
+                byte[] questionBytes = Encoding.UTF8.GetBytes(questions[i] + "\n정답을 입력하세요 (1, 2, 3): ");
+                cliSocket.Send(questionBytes);
+
+                // 클라이언트로부터 답 수신
+                int nRecv = cliSocket.Receive(buffer);
+                string clientResponse = Encoding.UTF8.GetString(buffer, 0, nRecv).Trim();
+
+                // 정답 체크
+                if (int.TryParse(clientResponse, out int clientAnswer) && clientAnswer == answers[i])
+                {
+                    if (i == questions.Length - 1)
+                    {
+                        byte[] winMessage = Encoding.UTF8.GetBytes("정답입니다! 축하합니다! 모든 문제를 맞추셨습니다. 우승하셨습니다!\n");
+                        cliSocket.Send(winMessage);
+                    }
+                    else
+                    {
+                        byte[] correctMessage = Encoding.UTF8.GetBytes("정답입니다!\n");
+                        cliSocket.Send(correctMessage);
+                    }
+                }
+                else
+                {
+                    byte[] failMessage = Encoding.UTF8.GetBytes("오답입니다. 다음 기회에 도전하세요.\n");
+                    cliSocket.Send(failMessage);
+                    break;
+                }
+            }
+
+            cliSocket.Close();
+        }
+    }
+}
+```
+```
+<QuizClient>
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
+
+namespace QuizClient
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread clientThread = new Thread(ClientFunc);
+            clientThread.Start();
+            clientThread.IsBackground = true;
+            clientThread.Join();
+
+            Console.WriteLine("클라이언트 프로그램이 종료되었습니다.");
+        }
+
+        static void ClientFunc(object obj)
+        {
+            try
+            {
+                // 1. 소켓 생성
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                // 2. 서버에 연결
+                EndPoint serverEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 13000);
+                socket.Connect(serverEP);
+
+                byte[] recvBytes = new byte[1024];
+                int nRecv;
+
+                while (true)
+                {
+                    // 3. 서버로부터 문제 수신
+                    nRecv = socket.Receive(recvBytes);
+                    string question = Encoding.UTF8.GetString(recvBytes, 0, nRecv);
+                    Console.Write(question);
+
+                    // 4. 사용자 입력 받기 및 전송
+                    string userInput = Console.ReadLine();
+                    byte[] sendBytes = Encoding.UTF8.GetBytes(userInput);
+                    socket.Send(sendBytes);
+
+                    // 5. 서버로부터 응답 수신
+                    nRecv = socket.Receive(recvBytes);
+                    string response = Encoding.UTF8.GetString(recvBytes, 0, nRecv);
+                    Console.WriteLine(response);
+
+                    // 게임 종료 체크
+                    if (response.Contains("우승하셨습니다") || response.Contains("다음 기회에 도전하세요"))
+                    {
+                        break;
+                    }
+                }
+
+                // 6. 소켓 종료
+                socket.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
