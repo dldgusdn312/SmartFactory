@@ -245,6 +245,7 @@ namespace WinFormEchoClient02
                 string echoMsg = Encoding.UTF8.GetString(echoMsgBytes);
                 //Console.WriteLine($"Echo 메시지 : " + echoMsg);
                 textBox2.AppendText($"Echo 메시지 : " + echoMsg);
+                textBox2.AppendText("\r\n");
                 client.Close();
 
             }
